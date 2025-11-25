@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gavin Leveritt | Portfolio</title>
+
+    <!-- Google fonts (optional but recommended) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --royal-blue: #0b2a6b;
+        --royal-blue-dark: #071a42;
+        --gold: #d4af37;
+        --gold-soft: #f2dc8c;
+        --off-white: #f8f5ef;
+        --text-light: #f5f5f5;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: radial-gradient(
+          circle at top,
+          #274b97 0,
+          var(--royal-blue-dark) 45%,
+          #020920 100%
+        );
+        color: var(--text-light);
+        line-height: 1.6;
+        padding: 40px 16px;
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        background: linear-gradient(
+          135deg,
+          #05163b 0,
+          #0b2a6b 40%,
+          #05163b 100%
+        );
+        border: 1px solid var(--gold);
+        border-radius: 16px;
+        padding: 32px 28px 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.5);
+        padding-bottom: 20px;
+        margin-bottom: 24px;
+      }
+
+      .logo-wrap {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        border: 2px solid var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: rgba(3, 9, 26, 0.7);
+      }
+
+      .logo-wrap img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .title-block {
+        flex: 1;
+        min-width: 220px;
+      }
+
+      .name {
+        font-family: "Cinzel", serif;
+        font-size: 1.9rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      .subtitle {
+        margin-top: 4px;
+        font-size: 0.9rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+      }
+
+      .contact {
+        min-width: 220px;
+        font-size: 0.8rem;
+        text-align: right;
+      }
+
+      .contact a {
+        color: var(--gold-soft);
+        text-decoration: none;
+      }
+
+      .contact a:hover {
+        text-decoration: underline;
+      }
+
+      /* Tabs */
+
+      .tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+        padding-bottom: 6px;
+        overflow-x: auto;
+      }
+
+      .tab-btn {
+        border: 1px solid rgba(212, 175, 55, 0.7);
+        border-radius: 999px;
+        padding: 8px 18px;
+        background: transparent;
+        color: var(--gold-soft);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+      }
+
+      .tab-btn.active {
+        background: var(--gold);
+        color: #09142f;
+        transform: translateY(-1px);
+      }
+
+      .tab-btn:hover:not(.active) {
+        background: rgba(212, 175, 55, 0.15);
+      }
+
+      .tab-content {
+        display: none;
+        margin-top: 18px;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      h2.section-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.3rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        color: var(--gold-soft);
+      }
+
+      .section-intro {
+        font-size: 0.95rem;
+        max-width: 800px;
+        color: #e3e0d8;
+        margin-bottom: 16px;
+      }
+
+      /* Bio */
+
+      .bio-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.7fr);
+        gap: 24px;
+      }
+
+      .bio-card,
+      .highlight-card {
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        background: radial-gradient(circle at top, #1b2f60 0, #050c23 60%);
+        padding: 18px 18px 20px;
+      }
+
+      .bio-card h3,
+      .highlight-card h3 {
+        font-family: "Cinzel", serif;
+        font-size: 1rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        color: var(--gold-soft);
+      }
+
+      ul.tag-list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .tag {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        border-radius: 999px;
+        border: 1px solid rgba(212, 175, 55, 0.6);
+        padding: 4px 9px;
+        letter-spacing: 0.12em;
+      }
+
+      /* Timeline */
+
+      .timeline {
+        margin-top: 8px;
+        border-left: 2px solid rgba(212, 175, 55, 0.6);
+        padding-left: 18px;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 18px;
+        padding-left: 6px;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -22px;
+        top: 4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.25);
+      }
+
+      .timeline-date {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--gold-soft);
+        margin-bottom: 2px;
+      }
+
+      .timeline-role {
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .timeline-location {
+        font-size: 0.85rem;
+        color: #d4d0c3;
+        margin-bottom: 4px;
+      }
+
+      .timeline-item p {
+        font-size: 0.9rem;
+        color: #e6e1d5;
+      }
+
+      /* Testimonials */
+
+      .testimonial-wrap {
+        margin-top: 22px;
+      }
+
+      .testimonial-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+
+      .testimonial-card {
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        background: radial-gradient(circle at top left, #22356a 0, #040a1b 65%);
+        padding: 14px 16px 16px;
+        font-size: 0.88rem;
+      }
+
+      .testimonial-card p {
+        margin-bottom: 8px;
+        color: #f1eee7;
+      }
+
+      .testimonial-author {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--gold-soft);
+      }
+
+      /* Entrepreneurial cards */
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr);
+        gap: 24px;
+        margin-top: 8px;
+      }
+
+      .project-card {
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        background: radial-gradient(circle at top, #203569 0, #050b20 60%);
+        padding: 18px 18px 20px;
+        font-size: 0.92rem;
+      }
+
+      .project-card h3 {
+        font-family: "Cinzel", serif;
+        font-size: 1rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        color: var(--gold-soft);
+      }
+
+      .project-card ul {
+        margin-left: 1rem;
+        margin-top: 6px;
+      }
+
+      .project-card li {
+        margin-bottom: 4px;
+      }
+
+      .small-label {
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+        margin-bottom: 4px;
+      }
+
+      @media (max-width: 800px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .contact {
+          text-align: left;
+        }
+        .bio-grid,
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="logo-wrap">
+          <!-- Replace "logo.png" with the path to your actual logo image -->
+          <img
+            src="jonnyharold444.github.io/images/IMG_2526-Picsart-CropImage.png"
+            alt="Gavin Leveritt Logo"
+          />
+        </div>
+
+        <div class="title-block">
+          <div class="name">Gavin Leveritt</div>
+          <div class="subtitle">
+            Christian Community Leader | Technical Specialist | Creative
+            Director
+          </div>
+        </div>
+
+        <div class="contact">
+          <div>Fort Worth, TX</div>
+          <div>📞 (682) 203-4222</div>
+          <div>
+            📧
+            <a href="mailto:jonnyharold4444@gmail.com"
+              >jonnyharold4444@gmail.com</a
+            >
+          </div>
+          <div>
+            🔗
+            <a
+              href="https://www.linkedin.com/in/gavin-leveritt-465971263/"
+              target="_blank"
+              >LinkedIn Profile</a
+            >
+          </div>
+        </div>
+      </header>
+
+      <!-- TABS -->
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab-target="#bio">Bio</button>
+        <button class="tab-btn" data-tab-target="#experience">
+          Experience &amp; Testimonials
+        </button>
+        <button class="tab-btn" data-tab-target="#entrepreneur">
+          Entrepreneurial Endeavors
+        </button>
+         <button class="tab-btn" data-tab-target="#current-pursuits">
+          Current Pursuits and Organizations
+        </button>
+          <button class="tab-btn" data-tab-target="#resume-cover-letter">
+            Resume &amp; Cover Letter
+          </button>
+      </nav>
+
+      <main>
+        <!-- BIO TAB -->
+        <section id="bio" class="tab-content active">
+          <h2 class="section-title">Bio</h2>
+          <p class="section-intro">
+            I’m a multidisciplinary leader blending Christian community values
+            with technical skill, entrepreneurship, and hands-on craftsmanship.
+            From theatre and AV production to culinary work, mechanical repair,
+            and business leadership, my mission is to build infrastructure that
+            connects people, stories, and local businesses.
+          </p>
+
+          <div class="bio-grid">
+            <div class="bio-card">
+              <h3>About Gavin</h3>
+              <p>
+                My journey has taken me through theatre stages, restaurant
+                floors, auto bays, and boardrooms. I've worked as an actor, AV
+                and lighting technician, maintenance technician, assistant
+                general manager, and now district manager for Gabriel Premium
+                Beef while founding my own company, Realest EntertainMeant.
+                Across every role, I focus on improving systems, elevating
+                experiences, and honoring people.
+              </p>
+            </div>
+
+            <div class="highlight-card">
+              <h3>Focus Areas</h3>
+              <ul class="tag-list">
+                <li class="tag">Leadership &amp; Operations</li>
+                <li class="tag">AV &amp; Lighting</li>
+                <li class="tag">Culinary / Smoked Meats</li>
+                <li class="tag">Mechanical Repair</li>
+                <li class="tag">Writing &amp; Communication</li>
+                <li class="tag">Community Building</li>
+                <li class="tag">Entrepreneurship</li>
+              </ul>
+            </div>
+
+            <div class="highlight-card">
+            <h3>Strengths</h3>
+            <ul class="tag-list">
+              <li class="tag">Problem Solving</li>
+              <li class="tag">Adapt ability</li>
+              <li class="tag">Attention to Detail</li>
+              <li class="tag">Community Building</li>
+              <li class="tag">Effective Communication</li>
+              <li class="tag">Time Management</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE TAB -->
+        <section id="experience" class="tab-content">
+          <h2 class="section-title">Experience Timeline</h2>
+          <p class="section-intro">
+            A timeline of my professional roles, from my first theatre contract
+            in 2014 to my current work leading operations in the beef industry.
+            You can add or edit entries and paste testimonials from supervisors,
+            pastors, or colleagues into the testimonial section below.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">Aug 2025 – Present</div>
+              <div class="timeline-role">
+                District Manager — Gabriel Premium Beef
+              </div>
+              <div class="timeline-location">Dallas, TX</div>
+              <p>
+                Oversee multi-location operations, quality, staffing, and
+                logistics while building relationships with vendors and local
+                partners.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">Sep 2024 – May 2025</div>
+              <div class="timeline-role">
+                Assistant General Manager — Jersey Mike’s Subs
+              </div>
+              <div class="timeline-location">Fort Worth, TX</div>
+              <p>
+                Led day-to-day store operations, trained teams, managed
+                inventory, and implemented systems to improve service and
+                efficiency.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">Sep 2023 – Jan 2024</div>
+              <div class="timeline-role">
+                Maintenance Technician — Firestone Complete Auto Care
+              </div>
+              <div class="timeline-location">
+                Fort Worth, TX &amp; Dublin, OH
+              </div>
+              <p>
+                Performed diagnostics and maintenance, blending technical skill
+                with customer communication and safety-focused service.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">Jul 2022 – Dec 2022</div>
+              <div class="timeline-role">
+                Audio &amp; Lighting Technician (Contract) — Bishop Arts Theatre
+                Center
+              </div>
+              <div class="timeline-location">Dallas, TX</div>
+              <p>
+                Operated audio and lighting for live theatre, collaborating with
+                directors and performers to shape powerful experiences.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">Dec 2021 – May 2022</div>
+              <div class="timeline-role">
+                Busser (Part-Time) — Pappasito’s Cantina
+              </div>
+              <div class="timeline-location">Fort Worth, TX</div>
+              <p>
+                Supported table turnover and guest service in a fast-paced
+                environment, developing hospitality and teamwork skills.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">Dec 2014</div>
+              <div class="timeline-role">
+                Actor (Contract) — Jubilee Theatre
+              </div>
+              <div class="timeline-location">Fort Worth, TX</div>
+              <p>
+                Performed in professional theatre, strengthening stage presence,
+                discipline, and storytelling.
+              </p>
+            </div>
+          </div>
+
+          <!-- TESTIMONIALS -->
+          <div class="testimonial-wrap">
+            <h2 class="section-title">Testimonials</h2>
+            <p class="section-intro">
+              Testimonials from managers, pastors, coworkers, and clients
+            </p>
+
+            <div class="testimonial-list">
+              <div class="testimonial-card">
+                <p>
+                  “ Seeing his journey of becoming a disciple of Jesus is one
+                  that should be written about as for almost two months he
+                  didn't just learn about the bible he lived it! It's inspired
+                  me to go after God during a tough season in my own life. I'll
+                  never forget Gavin making the decisions to get baptized based
+                  off what he saw from the scriptures and it looked like no one
+                  could stop him from doing what he felt God had called him to
+                  do. I've watched God transform his character, his attitude,
+                  his mindset, his convictions, and his love for people. I
+                  believe if more people were like Gavin in the way he strives
+                  to live like Jesus, the faster we would see this world changed
+                  for God! His purity of heart and love for God builds a gravity
+                  that attracts any and everyone to him as such a person brings
+                  light to a very dark world. I can't wait to see many more
+                  people that he will help as he continues to live out his
+                  Christian walk for the rest of his days.”
+                </p>
+                <div class="testimonial-author">
+                  — Dylan Harding, local Pastor and Member of DFW ICC
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <p>
+                  “Gavin completed three separate projects for me at my home,
+                  each on different days, and each one was finished in five
+                  hours or less. He began by cleaning out my backyard garage,
+                  which he organized and cleared thoroughly. On another day he
+                  installed a new ceiling fan and light fixture, completing the
+                  electrical work safely and efficiently. He also installed new
+                  flooring, and the final result was clean, precise, and
+                  high-quality. Throughout all three jobs, Gavin demonstrated
+                  professionalism, skill, and an impressive ability to work
+                  quickly without sacrificing quality. I was extremely satisfied
+                  with his work.”
+                </p>
+                <div class="testimonial-author">
+                  — Shiretha Brown, Homerowner
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <p>
+                  “I have eaten a lot of brisket, including from some of the top
+                  spots in Texas, and Gavin's smoked wet brisket is right up
+                  there with the very best. It is perfectly moist, incredibly
+                  tender, and packed with flavor. It is hands down the best I
+                  have ever had.”
+                </p>
+                <div class="testimonial-author">
+                  — Albert Newsome, Forest Hill Resident
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ENTREPRENEUR TAB -->
+        <section id="entrepreneur" class="tab-content">
+          <h2 class="section-title">Entrepreneurial Endeavors</h2>
+          <p class="section-intro">
+            Beyond traditional roles, I build systems and platforms that connect
+            communities to local businesses, especially in entertainment and
+            media.
+          </p>
+
+          <div class="project-grid">
+            <div class="project-card">
+              <h3>Realest EntertainMeant — CEO &amp; Founder</h3>
+              <div class="small-label">Fort Worth, TX · 2022 – Present</div>
+              <p>
+                Realest EntertainMeant is my ongoing venture focused on
+                entertainment, community connection, and data-driven
+                collaboration with local businesses.
+              </p>
+              <ul>
+                <li>
+                  Built and managed social media outlets for the brand including
+                  YouTube, Patreon, Instagram, and Facebook.
+                </li>
+                <li>
+                  Designed and hosted listening and entertainment events,
+                  handling concept, promotion, and live execution.
+                </li>
+                <li>
+                  Currently building server infrastructure for content, data
+                  collection, and future digital tools.
+                </li>
+                <li>
+                  Collecting operational data on local entertainment businesses
+                  to identify trends and collaboration opportunities.
+                </li>
+                <li>
+                  Long-term goal: create a network that connects communities
+                  with local businesses through shared experiences and
+                  storytelling.
+                </li>
+              </ul>
+            </div>
+          
+
+            <div class="project-card">
+              <h3>Future Initiatives</h3>
+              <p>
+                Use this space to add upcoming ideas, inventions, or
+                collaborations. For example:
+              </p>
+              <ul>
+                <li>
+                  Clothing capsule collections tied to community events or
+                  causes.
+                </li>
+                <li>
+                  Multimedia storytelling projects featuring local entrepreneurs
+                  and artists.
+                </li>
+                <li>
+                  Workshops or youth programs that teach AV, leadership, and
+                  entrepreneurship skills.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+             
+           <!-- CURRENT PURSUITS TAB -->
+        <section id="current-pursuits" class="tab-content">
+          <h2 class="section-title">Current Pursuits and Organizations</h2>
+          <p class="section-intro">
+            These are current programs, organizations, and educational institutions I am currently involved with.
+          </p>
+          <div class="highlight-card">
+            <h3>programs</h3>
+            <ul class="tag-list">
+              <li class="tag">Black Student Union</li>
+              <li class="tag">HTML Classes</li>
+            </ul>
+          </div>
+          <div class="highlight-card">
+            <h3>organizations</h3>
+            <ul class="tag-list">
+              <li class="tag">DFW International Christians Church</li>
+            </ul>
+          </div>
+          <div class="highlight-card">
+            <h3>educational institutions</h3>
+            <ul class="tag-list">
+              <li class="tag">Tarrant County College</li>
+            </ul>
+          </div>
+            </div>
+          </li>
+        </ul>
+         </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- RESUME & COVER LETTER TAB -->
+        <section id="resume-cover-letter" class="tab-content">
+          <h2 class="section-title">Resume & Cover Letter</h2>
+          <iframe src="jonnyharold444.github.io\Documents\Resume, EPE, Coverletter 3.pdf" width="100%" height="600px">
+          </iframe>
+            </div>
+          </li>
+        </ul>
+         </div>
+          </div>
+        </div>
+      </section>
+      
+      
+    </main>
+    </div>
+
+    <script>
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetSelector = btn.getAttribute("data-tab-target");
+          const target = document.querySelector(targetSelector);
+
+          tabButtons.forEach((b) => b.classList.remove("active"));
+          tabContents.forEach((c) => c.classList.remove("active"));
+
+          btn.classList.add("active");
+          if (target) target.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
