@@ -359,6 +359,25 @@
         .project-grid {
           grid-template-columns: 1fr;
         }
+        .download-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.8);
+  color: #09142f;
+  font-weight: 600;
+  background: linear-gradient(135deg, #d4af37, #f2dc8c);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.4);
+        }
       }
     </style>
   </head>
@@ -733,7 +752,7 @@
           <h2 class="section-title">Resume & Cover Letter</h2>
           <iframe src="Resume, EPE, Coverletter 3.pdf" width="100%" height="600px">  
           </iframe>
-           <a href="Resume, EPE, Coverletter 3.pdf">download the PDF directly</a> 
+           <a href="Resume, EPE, Coverletter 3.pdf" download class="download-btn">Download Résumé</a>
             </div>
           </li>
         </ul>
